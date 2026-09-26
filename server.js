@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const session = require("express-session");
+const authRoutes = require("./routes/authRoutes");
 
 dotenv.config();
 
@@ -12,6 +14,14 @@ app.set("view engine", "ejs");
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use("/", authRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URL)
