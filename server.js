@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const session = require("express-session");
 const authRoutes = require("./routes/authRoutes");
+const studentRoutes = require("./routes/studentRoutes");
+const companyRoutes = require("./routes/companyRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 dotenv.config();
 
@@ -22,6 +25,9 @@ app.use(session({
 }));
 
 app.use("/", authRoutes);
+app.use("/", studentRoutes);
+app.use("/", companyRoutes);
+app.use("/", adminRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URL)

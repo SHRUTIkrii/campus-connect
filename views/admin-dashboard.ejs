@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | CampusConnect</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .navbar {
+            background: #1e3a8a;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .logout {
+            background: white;
+            color: #1e3a8a;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 220px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            color: #1e3a8a;
+        }
+
+        .card p {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <h2>CampusConnect</h2>
+
+        <a href="/logout" class="logout">
+            Logout
+        </a>
+
+    </div>
+
+    <div class="container">
+
+        <h1>Welcome, <%= name %> 👋</h1>
+
+        <p>Admin / TPO Dashboard</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>👨‍🎓 Students</h3>
+                <p>Manage registered students.</p>
+            </div>
+
+            <div class="card">
+                <h3>🏢 Companies</h3>
+                <p>Review and manage companies.</p>
+            </div>
+
+            <div class="card">
+                <h3>📢 Placement Drives</h3>
+                <p>Monitor placement drives.</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Analytics</h3>
+                <p>View placement statistics.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -85,16 +85,28 @@ router.post("/login", async (req, res) => {
             user.password
         );
 
-        if (!passwordMatch) {
-            return res.send("Invalid email or password");
-        }
+       if (!passwordMatch) {
+    return res.send("Invalid email or password");
+}
 
-        // Create session
-        req.session.userId = user._id;
-        req.session.role = user.role;
-        req.session.name = user.name;
+req.session.userId = user._id;
+req.session.role = user.role;
+req.session.name = user.name;
 
-        res.send("Login successful");
+// Role ke according dashboard
+if (user.role === "student") {
+    return res.redirect("/student/dashboard");
+}
+
+if (user.role === "company") {
+    return res.redirect("/company/dashboard");
+}
+
+if (user.role === "admin") {
+    return res.redirect("/admin/dashboard");
+}
+
+res.send("Invalid role");
 
     } catch (error) {
 
@@ -105,5 +117,21 @@ router.post("/login", async (req, res) => {
 
 });
 
+// ================= LOGOUT =================
+
+router.get("/logout", (req, res) => {
+
+    req.session.destroy((err) => {
+
+        if (err) {
+            console.log(err);
+            return res.send("Logout failed");
+        }
+
+        res.redirect("/login");
+
+    });
+
+});
 
 module.exports = router;
