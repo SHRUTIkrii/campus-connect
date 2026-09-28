@@ -2,6 +2,13 @@ const mongoose = require("mongoose");
 
 const studentSchema = new mongoose.Schema({
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+        unique: true
+    },
+
     name: {
         type: String,
         required: true
@@ -15,12 +22,17 @@ const studentSchema = new mongoose.Schema({
 
     phone: {
         type: String,
-        required: true
+        default: ""
     },
 
     branch: {
         type: String,
         required: true
+    },
+
+    semester: {
+        type: Number,
+        default: 1
     },
 
     graduationYear: {
@@ -35,12 +47,12 @@ const studentSchema = new mongoose.Schema({
 
     tenthPercentage: {
         type: Number,
-        required: true
+        default: 0
     },
 
     twelfthPercentage: {
         type: Number,
-        required: true
+        default: 0
     },
 
     skills: {

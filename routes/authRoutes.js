@@ -92,6 +92,7 @@ router.post("/login", async (req, res) => {
 req.session.userId = user._id;
 req.session.role = user.role;
 req.session.name = user.name;
+req.session.email = user.email;
 
 // Role ke according dashboard
 if (user.role === "student") {
