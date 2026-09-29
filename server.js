@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const session = require("express-session");
 const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
+const placementRoutes = require("./routes/placementRoutes");
 const companyRoutes = require("./routes/companyRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
@@ -26,6 +27,7 @@ app.use(session({
 
 app.use("/", authRoutes);
 app.use("/", studentRoutes);
+app.use("/",placementRoutes);
 app.use("/", companyRoutes);
 app.use("/", adminRoutes);
 

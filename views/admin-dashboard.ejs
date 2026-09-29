@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin Dashboard | CampusConnect</title>
 
     <style>
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -59,10 +63,30 @@
         .card p {
             color: #666;
         }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 9px 14px;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: #172e6b;
+        }
+
     </style>
+
 </head>
 
+
 <body>
+
+
+    <!-- NAVBAR -->
 
     <div class="navbar">
 
@@ -74,37 +98,82 @@
 
     </div>
 
+
+    <!-- MAIN CONTENT -->
+
     <div class="container">
 
         <h1>Welcome, <%= name %> 👋</h1>
 
         <p>Admin / TPO Dashboard</p>
 
+
         <div class="cards">
 
+
+            <!-- STUDENTS -->
+
             <div class="card">
+
                 <h3>👨‍🎓 Students</h3>
-                <p>Manage registered students.</p>
+
+                <p>
+                    Manage registered students.
+                </p>
+
             </div>
 
+
+            <!-- COMPANIES -->
+
             <div class="card">
+
                 <h3>🏢 Companies</h3>
-                <p>Review and manage companies.</p>
+
+                <p>
+                    Review and manage companies.
+                </p>
+
             </div>
 
+
+            <!-- PLACEMENT DRIVES -->
+
             <div class="card">
+
                 <h3>📢 Placement Drives</h3>
-                <p>Monitor placement drives.</p>
+
+                <p>
+                    Add and manage placement drives.
+                </p>
+
+                <a
+                    href="/admin/add-placement"
+                    class="btn">
+                    Add Placement
+                </a>
+
             </div>
 
+
+            <!-- ANALYTICS -->
+
             <div class="card">
+
                 <h3>📊 Analytics</h3>
-                <p>View placement statistics.</p>
+
+                <p>
+                    View placement statistics.
+                </p>
+
             </div>
+
 
         </div>
 
     </div>
 
+
 </body>
+
 </html>

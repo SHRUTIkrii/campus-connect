@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Placement | CampusConnect</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #182848;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #182848;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #243b68;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #182848;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Add Placement Drive</h1>
+
+            <form action="/admin/add-placement" method="POST">
+
+                <label>Company Name</label>
+
+                <input
+                    type="text"
+                    name="company"
+                    placeholder="Example: TCS"
+                    required
+                >
+
+
+                <label>Job Role</label>
+
+                <input
+                    type="text"
+                    name="jobRole"
+                    placeholder="Example: Software Developer"
+                    required
+                >
+
+
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    name="location"
+                    placeholder="Example: Bangalore"
+                    required
+                >
+
+
+                <label>Salary / Package</label>
+
+                <input
+                    type="text"
+                    name="salary"
+                    placeholder="Example: 6 LPA"
+                    required
+                >
+
+
+                <label>Eligibility</label>
+
+                <input
+                    type="text"
+                    name="eligibility"
+                    placeholder="Example: CGPA 7.5+, CSE/ECE"
+                    required
+                >
+
+
+                <label>Application Deadline</label>
+
+                <input
+                    type="date"
+                    name="deadline"
+                    required
+                >
+
+
+                <label>Job Description</label>
+
+                <textarea
+                    name="description"
+                    placeholder="Enter placement details..."
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    Add Placement
+                </button>
+
+            </form>
+
+
+            <a
+                href="/admin/dashboard"
+                class="back">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
