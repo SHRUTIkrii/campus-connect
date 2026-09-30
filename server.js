@@ -7,6 +7,7 @@ const studentRoutes = require("./routes/studentRoutes");
 const placementRoutes = require("./routes/placementRoutes");
 const companyRoutes = require("./routes/companyRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const applicationRoutes = require("./routes/applicationRoutes");
 
 dotenv.config();
 
@@ -27,9 +28,10 @@ app.use(session({
 
 app.use("/", authRoutes);
 app.use("/", studentRoutes);
-app.use("/",placementRoutes);
+app.use("/", placementRoutes);
 app.use("/", companyRoutes);
 app.use("/", adminRoutes);
+app.use("/", applicationRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URL)

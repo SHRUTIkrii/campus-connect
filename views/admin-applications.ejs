@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Applications | CampusConnect</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .navbar {
+            background: #1e3a8a;
+            color: white;
+            padding: 18px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .navbar a {
+            background: white;
+            color: #1e3a8a;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .application {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .application h2 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        .application p {
+            color: #555;
+        }
+
+        select {
+            padding: 9px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 9px 15px;
+            border: none;
+            border-radius: 6px;
+
+            background: #1e3a8a;
+            color: white;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #172e6b;
+        }
+
+        .empty {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="navbar">
+
+        <h2>
+            CampusConnect
+        </h2>
+
+        <a href="/admin/dashboard">
+            Dashboard
+        </a>
+
+    </div>
+
+
+    <div class="container">
+
+        <h1>
+            Placement Applications 📋
+        </h1>
+
+        <p>
+            Welcome, <%= name %>
+        </p>
+
+
+        <% if (applications.length === 0) { %>
+
+
+            <div class="empty">
+
+                <h3>
+                    No applications yet.
+                </h3>
+
+                <p>
+                    Students have not applied for any placement.
+                </p>
+
+            </div>
+
+
+        <% } else { %>
+
+
+            <% applications.forEach(application => { %>
+
+
+                <div class="application">
+
+
+                    <h2>
+
+                        <%= application.placement.company %>
+
+                    </h2>
+
+
+                    <p>
+
+                        <strong>
+                            Student:
+                        </strong>
+
+                        <%= application.student.name %>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Student Email:
+                        </strong>
+
+                        <%= application.student.email %>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Job Role:
+                        </strong>
+
+                        <%= application.placement.jobRole %>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Location:
+                        </strong>
+
+                        <%= application.placement.location %>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Applied On:
+                        </strong>
+
+                        <%= application.createdAt.toDateString() %>
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Current Status:
+                        </strong>
+
+                        <%= application.status %>
+
+                    </p>
+
+
+                    <form
+                        action="/admin/application/<%= application._id %>/status"
+                        method="POST">
+
+
+                        <select name="status">
+
+                            <option
+                                value="Applied"
+                                <%= application.status === "Applied" ? "selected" : "" %>>
+
+                                Applied
+
+                            </option>
+
+
+                            <option
+                                value="Shortlisted"
+                                <%= application.status === "Shortlisted" ? "selected" : "" %>>
+
+                                Shortlisted
+
+                            </option>
+
+
+                            <option
+                                value="Selected"
+                                <%= application.status === "Selected" ? "selected" : "" %>>
+
+                                Selected
+
+                            </option>
+
+
+                            <option
+                                value="Rejected"
+                                <%= application.status === "Rejected" ? "selected" : "" %>>
+
+                                Rejected
+
+                            </option>
+
+                        </select>
+
+
+                        <button type="submit">
+
+                            Update Status
+
+                        </button>
+
+
+                    </form>
+
+
+                </div>
+
+
+            <% }) %>
+
+
+        <% } %>
+
+
+    </div>
+
+
+</body>
+
+</html>

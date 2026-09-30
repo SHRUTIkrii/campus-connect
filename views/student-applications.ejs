@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications | CampusConnect</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .navbar {
+            background: #1e3a8a;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .back {
+            background: white;
+            color: #1e3a8a;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .application {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .application h2 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+
+        .application p {
+            color: #555;
+        }
+
+        .status {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e3a8a;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .empty {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <h2>CampusConnect</h2>
+
+        <a href="/student/dashboard" class="back">
+            Dashboard
+        </a>
+
+    </div>
+
+
+    <div class="container">
+
+        <h1>My Applications 📋</h1>
+
+        <% if (applications.length === 0) { %>
+
+            <div class="empty">
+                <h3>No applications yet.</h3>
+                <p>Apply for a placement to see it here.</p>
+            </div>
+
+        <% } else { %>
+
+            <% applications.forEach(application => { %>
+
+                <div class="application">
+
+                    <h2>
+                        <%= application.placement.company %>
+                    </h2>
+
+                    <p>
+                        <strong>Position:</strong>
+                        <%= application.placement.title %>
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        <%= application.placement.location %>
+                    </p>
+
+                    <p>
+                        <strong>Applied On:</strong>
+                        <%= application.createdAt.toDateString() %>
+                    </p>
+
+                    <span class="status">
+                        <%= application.status %>
+                    </span>
+
+                </div>
+
+            <% }) %>
+
+        <% } %>
+
+    </div>
+
+</body>
+</html>

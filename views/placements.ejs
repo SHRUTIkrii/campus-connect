@@ -1,12 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Placements | CampusConnect</title>
 
     <style>
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -61,13 +66,14 @@
         }
 
         .apply-btn {
-            display: inline-block;
             margin-top: 15px;
             padding: 10px 18px;
             background: #182848;
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
         }
 
         .apply-btn:hover {
@@ -80,80 +86,131 @@
             border-radius: 10px;
             text-align: center;
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
     <div class="header">
+
         <h1>Available Placements 💼</h1>
-        <p>Welcome, <%= name %>!</p>
+
+        <p>
+            Welcome, <%= name %>!
+        </p>
+
     </div>
+
 
     <div class="container">
 
         <h2>Placement Opportunities</h2>
 
+
         <% if (placements.length === 0) { %>
 
+
             <div class="empty">
+
                 <h3>No placements available yet.</h3>
-                <p>New placement opportunities will appear here.</p>
+
+                <p>
+                    New placement opportunities will appear here.
+                </p>
+
             </div>
+
 
         <% } else { %>
 
+
             <div class="placements">
+
 
                 <% placements.forEach(placement => { %>
 
+
                     <div class="card">
 
-                        <h3><%= placement.company %></h3>
+
+                        <h3>
+                            <%= placement.company %>
+                        </h3>
+
 
                         <p>
                             <strong>Role:</strong>
                             <%= placement.jobRole %>
                         </p>
 
+
                         <p>
                             <strong>Location:</strong>
                             <%= placement.location %>
                         </p>
+
 
                         <p>
                             <strong>Salary:</strong>
                             <%= placement.salary %>
                         </p>
 
+
                         <p>
                             <strong>Eligibility:</strong>
                             <%= placement.eligibility %>
                         </p>
+
 
                         <p>
                             <strong>Deadline:</strong>
                             <%= placement.deadline %>
                         </p>
 
+
                         <p>
                             <strong>Description:</strong>
                             <%= placement.description %>
                         </p>
 
-                        <a href="#" class="apply-btn">
-                            Apply Now
-                        </a>
+
+                        <!-- APPLY BUTTON -->
+
+                        <form
+                            action="/student/apply/<%= placement._id %>"
+                            method="POST"
+                        >
+
+                            <button
+                                type="submit"
+                                class="apply-btn"
+                            >
+                                Apply Now
+                            </button>
+
+                        </form>
+
 
                     </div>
 
+
                 <% }) %>
+
 
             </div>
 
+
         <% } %>
+
 
     </div>
 
+
 </body>
+
 </html>
+```
